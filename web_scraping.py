@@ -6,20 +6,13 @@ def scrap_data():
     from selenium.webdriver.chrome.service import Service
 
     download_service = Service()
-
     driver = webdriver.Chrome(service=download_service)
-
     driver.maximize_window()
 
     open_website(driver)
-
     prepare(driver)
-
     data = scrap(driver)
-
-    # Zamknięcie drivera
     driver.quit()
-
     return data
 
 def open_website(driver):
