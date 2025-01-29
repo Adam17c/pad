@@ -6,7 +6,8 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 
-def create_dashboard(data):
+def create_dashboard():
+    data = pd.read_csv('your_file_name.csv')
     data['Rok wydania'] = pd.to_datetime(data['Data wydania']).dt.year
 
     # Usuń 'Tag_' z nazw tagów
@@ -137,4 +138,13 @@ def create_dashboard(data):
 
     # Uruchomienie aplikacji
     if __name__ == '__main__':
-        app.run_server(debug=True)
+        
+
+        app.run_server(debug=True, port=8050)
+
+create_dashboard()
+
+def printLog(*args, **kwargs):
+    print(*args, **kwargs)
+    with open('output.out','a') as file:
+        print(*args, **kwargs, file=file)
