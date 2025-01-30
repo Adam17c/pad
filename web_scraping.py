@@ -20,11 +20,9 @@ def open_website(driver):
     url = "https://store.steampowered.com/category/science_fiction/"
     driver.get(url)
 
-    # Czekanie na załadowanie treści
-
 def prepare(driver):
-    time.sleep(5)  # Dostosuj, jeśli strona ładuje się szybciej
-    # Znajdź i kliknij przycisk zamykający popup
+    time.sleep(5)
+    # Zamkniecie popupu
     popup_close_button = driver.find_element(By.ID, "rejectAllButton")
     popup_close_button.click()
 
@@ -32,9 +30,8 @@ def prepare(driver):
     driver.execute_script("arguments[0].scrollIntoView(true);", menu_button)
     menu_button.click()
 
-    # Znalezienie elementu rodzica (div) dla <a> z tekstem "Gry"
+    # Wybranie kategorii Gry
     games_button = driver.find_element(By.XPATH, "//a[text()='Gry']")
-    # Kliknięcie elementu rodzica
     driver.execute_script("arguments[0].click();", games_button)
 
     time.sleep(2)
@@ -44,8 +41,8 @@ def scrap(driver):
     driver.execute_script('window.scroll(0, document.body.scrollHeight-2000)')
     time.sleep(2)
 
-    # Powtarzanie procesu 10 razy
-    for i in range(40):
+    # Powtarzanie procesu
+    for i in range(60):
         load_more_button = driver.find_element(By.CLASS_NAME, '_2tkiJ4VfEdI9kq1agjZyNz.Focusable')
         load_more_button.click()
         driver.execute_script('window.scroll(0, document.body.scrollHeight-2000)')

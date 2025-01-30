@@ -1,4 +1,3 @@
-from collections import Counter
 import plotly.graph_objects as go
 import dash
 from dash import dcc, html, Input, Output, dash_table
@@ -7,10 +6,9 @@ import plotly.express as px
 import pandas as pd
 
 def create_dashboard():
-    data = pd.read_csv('your_file_name.csv')
+    data = pd.read_csv('game_data.csv')
     data['Rok wydania'] = pd.to_datetime(data['Data wydania']).dt.year
 
-    # Usuń 'Tag_' z nazw tagów
     tag_columns = [col.replace('Tag_', '') for col in data.columns if col.startswith('Tag_')]
 
     # Inicjalizacja aplikacji Dash
@@ -138,13 +136,6 @@ def create_dashboard():
 
     # Uruchomienie aplikacji
     if __name__ == '__main__':
-        
-
         app.run_server(debug=True, port=8050)
 
 create_dashboard()
-
-def printLog(*args, **kwargs):
-    print(*args, **kwargs)
-    with open('output.out','a') as file:
-        print(*args, **kwargs, file=file)

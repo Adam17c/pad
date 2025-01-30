@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def clean_data(df):
-    # 1. Konwersja ceny
+    # Konwersja ceny
     def clean_price(price):
         try:
             if "Free to Play" in price:
@@ -13,7 +13,7 @@ def clean_data(df):
 
     df['Cena'] = df['Cena'].apply(clean_price)
 
-    # 2. Konwersja liczby recenzji
+    # Konwersja liczby recenzji
     def clean_reviews(reviews):
         try:
             return int(reviews.replace('Recenzje użytkowników: ', '').replace(' ', ''))
@@ -22,7 +22,7 @@ def clean_data(df):
 
     df['Liczba recenzji'] = df['Liczba recenzji'].apply(clean_reviews)
 
-    # 3. Konwersja daty wydania
+    # Konwersja daty wydania
     polish_months = {
         'STY': 'Jan', 'LUT': 'Feb', 'MAR': 'Mar', 'KWI': 'Apr', 'MAJ': 'May', 'CZE': 'Jun',
         'LIP': 'Jul', 'SIE': 'Aug', 'WRZ': 'Sep', 'PAŹ': 'Oct', 'LIS': 'Nov', 'GRU': 'Dec'
@@ -40,7 +40,7 @@ def clean_data(df):
 
     df['Data wydania'] = df['Data wydania'].apply(clean_date)
 
-    # 4. Rozbicie tagów na kolumny (one-hot encoding)
+    # Rozbicie tagów na kolumny (one-hot encoding)
     def split_tags(tags):
         return tags.split(', ') if isinstance(tags, str) else []
 
@@ -60,5 +60,9 @@ def clean_data(df):
 
     # Usuwanie potencjalnych braków danych (przykład)
     df.dropna(subset=['Cena', 'Liczba recenzji', 'Data wydania'], inplace=True)
+
+    # Dodanie kolumny z rokiem wydania
+    df['Data wydania'] = pd.to_datetime(df['Data wydania'])
+    df['Rok wydania'] = df['Data wydania'].dt.year
 
     return df
