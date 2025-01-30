@@ -12,7 +12,7 @@ Projekt skład się z następujących plików:
 
 ## Instrukcja uruchomienia
 
-Aby uruchomić projekt, należy utworzyć wirtualne środowiko pythonowe i zainstalowac biblioteki z pliku requirenments.txt.
+Aby uruchomić projekt, należy utworzyć wirtualne środowiko pythonowe i zainstalować biblioteki z pliku requirements.txt.
 Przykładowe komendy w konsoli (dla systemu Windows):
 - python -m venv myvenv (użyj python co najmniej 3.10)
 - myvenv\Scripts\activate
@@ -26,5 +26,5 @@ Aby uruchomić venv w VS Code:
 
 ## Uwagi dotyczące dashboardu
 
-Przed użyciem dashboardu, w Jupyter Notebook należy wykonać krok zapisujący dane do pliku games_data.csv. 
+Przed użyciem dashboardu, w Jupyter Notebook należy wykonać krok zapisujący dane do pliku game_data.csv. 
 Aby zobaczyć dashboard, należy uruchomić plik dashboard.py w konsoli (używając swtorzonego wcześniej środowiska wirtualnego). Dashboard korzysta z narzędzia Streamlit.
