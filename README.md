@@ -27,4 +27,4 @@ Aby uruchomić venv w VS Code:
 ## Uwagi dotyczące dashboardu
 
 Przed użyciem dashboardu, w Jupyter Notebook należy wykonać krok zapisujący dane do pliku game_data.csv. 
-Aby zobaczyć dashboard, należy uruchomić plik dashboard.py w konsoli (używając swtorzonego wcześniej środowiska wirtualnego). Dashboard korzysta z narzędzia Streamlit.
+Aby zobaczyć dashboard, należy uruchomić plik dashboard.py w konsoli (używając stworzonego wcześniej środowiska wirtualnego). Dashboard korzysta z narzędzia Streamlit.

@@ -58,7 +58,8 @@ def time_series_decomposition(df):
     tag_data = tag_trends[tag_to_analyze]
 
     # Dekompozycja szeregu czasowego (skupienie na trendzie)
-    decomposition = seasonal_decompose(tag_data, model='additive', period=1)
+    decomposition = seasonal_decompose(tag_data, model='additive', period=3)
+
 
     # Wizualizacja tylko trendu
     plt.figure(figsize=(10, 5))
@@ -80,13 +81,13 @@ def cross_table(df):
                 if tag1 in top_tags and tag2 in top_tags:
                     tag_matrix.loc[tag1, tag2] += 1
     tag_corr = tag_matrix.corr()
-    top_corr_tags = tag_corr.sum().sort_values(ascending=False).head(20).index
-    filtered_corr = tag_corr.loc[top_corr_tags, top_corr_tags]
+    top_corr_tags = tag_corr.sum().sort_values(ascending=False).index
 
     plt.figure(figsize=(12, 8))
-    sns.heatmap(filtered_corr, annot=True, cmap='coolwarm', xticklabels=top_corr_tags, yticklabels=top_corr_tags)
-    plt.title('Heatmapa dla 20 najbardziej skorelowanych tagów')
+    sns.heatmap(tag_corr, annot=True, cmap='coolwarm', xticklabels=top_corr_tags, yticklabels=top_corr_tags)
+    plt.title('Korelacja dla 20 najpopularniejszych tagów')
     plt.show()
+
 
 def scatter_plot(df):
     plt.figure(figsize=(12, 7))

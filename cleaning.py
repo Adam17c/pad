@@ -58,7 +58,7 @@ def clean_data(df):
     # Łączenie oryginalnego DataFrame z macierzą tagów
     df = pd.concat([df.reset_index(drop=True), tags_matrix.reset_index(drop=True)], axis=1)
 
-    # Usuwanie potencjalnych braków danych (przykład)
+    # Usuwanie potencjalnych braków danych
     df.dropna(subset=['Cena', 'Liczba recenzji', 'Data wydania'], inplace=True)
 
     # Dodanie kolumny z rokiem wydania
